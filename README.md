@@ -84,14 +84,12 @@ Raw Data → EDA → Data Cleaning → Feature Engineering → Train‑Test Spli
 
 ## 🤖 Applied Models
 
-```text
-| Model |Random Forest------|-------------|
-| 🌲 **Random Forest** | Ensemble of decision trees – imXGBoostracy, reduces overfitting |
-| 🚀 **XGBoost** | Powerful gradient bLogistic Regression competitions |
-| 📈 **Logistic Regression** | SiSupport Vector Machine (SVM)fier |
-| 📐 **Support Vector Machine (SVM)** | Robust clK‑Nearest Neighbors (KNN) spaces |
-| 👥 **K‑Nearest Neighbors (KNN)** | Distance‑based algorithm – classifies by nearest neighbours |
-```
+ 🌲 **Random Forest** 
+ 🚀 **XGBoost** 
+ 📈 **Logistic Regression** 
+ 📐 **Support Vector Machine (SVM)** 
+ 👥 **K‑Nearest Neighbors (KNN)** 
+
 ---
 
 ## 📊 Exploratory Data Analysis
