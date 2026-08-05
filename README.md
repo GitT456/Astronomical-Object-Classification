@@ -1,138 +1,154 @@
-
----
-
-### START OF README.md
-
 # 🌌 Astronomical Object Classification Using Machine Learning
 
-### Exploring the Universe Through Data, Astronomy, and Artificial Intelligence
-
----
+## Exploring the Universe Through Data, Astronomy, and Artificial Intelligence
 
 ## ✨ Overview
 
-For thousands of years, humanity has observed the night sky, striving to understand countless celestial objects. Ancient astronomers relied on visual observation and imagination. Today, modern sky surveys generate massive datasets that demand automated analysis.
+This project is an **end-to-end Machine Learning application** for classifying celestial objects using the Sloan Digital Sky Survey (SDSS) dataset.
 
-This project demonstrates how **Machine Learning** can classify celestial objects into:
+The application predicts whether an astronomical object is a:
 
-- ⭐ **Stars**
-- 🌌 **Galaxies**
-- ✨ **Quasars (QSOs)**
+- ⭐ Star
+- 🌌 Galaxy
+- ✨ Quasar (QSO)
 
-using real observational data from the **Sloan Digital Sky Survey (SDSS)**.
+The project covers the complete workflow from data preprocessing and model training to deployment using **FastAPI** and an interactive **HTML/CSS/JavaScript** web interface for real-time predictions.
+
+---
+
+## 🚀 Features
+
+- End-to-End Machine Learning pipeline
+- Exploratory Data Analysis (EDA)
+- Data preprocessing and feature engineering
+- Multiple ML model comparison
+- Random Forest final model
+- Model serialization with Joblib
+- REST API using FastAPI
+- Interactive web interface
+- Real-time predictions
 
 ---
 
 ## 🎯 Project Goal
 
-The goal is to build and compare multiple ML models to accurately classify astronomical objects based on their physical and spectroscopic properties. By analysing features such as brightness and redshift, the models learn to distinguish between different celestial bodies.
+Build a reliable machine learning system capable of automatically classifying celestial objects from SDSS observations and deploy the trained model as a usable web application.
 
 ---
 
-## 🔭 About the Dataset
+## 🔭 Dataset
 
-The dataset originates from the **Sloan Digital Sky Survey (SDSS)** – one of the largest and most comprehensive astronomical surveys ever conducted.
+Source: Sloan Digital Sky Survey (SDSS)
 
-### 📊 Dataset Statistics
-
-- **~100,000 observations**
-- **3 target classes**
-- Multiple photometric & spectroscopic features
-- Real‑world astronomical measurements
-
-### 🪐 Target Classes
+Target Classes:
 
 | Class | Description |
-|-------|-------------|
-| ⭐ **STAR** | Stellar objects within galaxies |
-| 🌌 **GALAXY** | Massive systems containing billions of stars |
-| ✨ **QSO** | Quasi‑Stellar Objects (quasars) – extremely luminous active galactic nuclei |
+|------|-------------|
+| ⭐ STAR | Stellar objects |
+| 🌌 GALAXY | Galaxies |
+| ✨ QSO | Quasars |
 
-### 🛰️ Features
+Main Features:
 
-| Feature | Description |
-|---------|-------------|
-| `RA` | Right Ascension (celestial longitude) |
-| `DEC` | Declination (celestial latitude) |
-| `u` | Ultraviolet brightness |
-| `g` | Green band brightness |
-| `r` | Red band brightness |
-| `i` | Near‑infrared brightness |
-| `z` | Infrared brightness |
-| `redshift` | Distance and motion indicator |
-| `plate` | Spectroscopic plate ID |
-| `MJD` | Observation date |
-| `fiber_ID` | Spectroscopic fibre ID |
-
-### 🔥 Why Redshift Matters
-
-Redshift is one of the most critical astronomical features. As objects move farther away, their light shifts towards the red end of the spectrum. It helps determine:
-
-- Distance from Earth
-- Relative motion
-- Expansion of the cosmos
+- Right Ascension (RA)
+- Declination (DEC)
+- u, g, r, i, z magnitudes
+- Redshift
+- Plate
+- MJD
+- Fiber ID
 
 ---
 
 ## ⚙️ Machine Learning Pipeline
 
-Raw Data → EDA → Data Cleaning → Feature Engineering → Train‑Test Split → Feature Scaling → Model Training → Evaluation → Model Comparison
+Raw Data
 
-`
+↓
 
----
+EDA
 
-## 🤖 Applied Models
+↓
 
- 🌲 **Random Forest** 
- 🚀 **XGBoost** 
- 📈 **Logistic Regression** 
- 📐 **Support Vector Machine (SVM)** 
- 👥 **K‑Nearest Neighbors (KNN)** 
+Data Cleaning
 
----
+↓
 
-## 📊 Exploratory Data Analysis
+Feature Engineering
 
-Key analyses performed:
+↓
 
-- Class distribution visualisation
-- Feature histograms
-- Redshift distribution analysis
-- Correlation heatmap
-- Feature importance ranking
-- Confusion matrices
-- Cross‑validation results
+Train/Test Split
 
----
+↓
 
-## 📏 Evaluation Metrics
+Model Training
 
-- Accuracy
-- Precision
-- Recall
-- F1‑score
-- Confusion Matrix
-- Cross‑validation (k‑fold)
+↓
 
----
+Model Evaluation
 
-## 🏆 Results
+↓
 
-Tree‑based models (Random Forest and XGBoost) achieved the best performance, thanks to their ability to capture complex non‑linear patterns in astronomical data.
+Model Serialization (Joblib)
 
-Overall, the results highlight the strong potential of Machine Learning for automating celestial object classification.
+↓
+
+FastAPI REST API
+
+↓
+
+HTML/CSS/JavaScript Interface
+
+↓
+
+Real-Time Prediction
 
 ---
 
-## 🛠️ Technologies Used
+## 🤖 Models Evaluated
 
-- Python – core programming language
-- Pandas, NumPy – data manipulation and analysis
-- Matplotlib, Seaborn – data visualisation
-- Scikit‑Learn – model building and evaluation
-- XGBoost – gradient boosting implementation
-- Jupyter Notebook – interactive development environment
+- Random Forest
+- XGBoost
+- Logistic Regression
+- Support Vector Machine (SVM)
+- K-Nearest Neighbors (KNN)
+
+Random Forest achieved the best overall performance and was selected as the final deployed model.
+
+---
+
+## 🌐 Deployment
+
+The trained model is deployed using FastAPI.
+
+The front-end communicates with the REST API and returns predictions instantly.
+
+Technologies:
+
+- FastAPI
+- Joblib
+- HTML
+- CSS
+- JavaScript
+
+---
+
+## 🛠️ Technologies
+
+- Python
+- Pandas
+- NumPy
+- Matplotlib
+- Seaborn
+- Scikit-Learn
+- XGBoost
+- FastAPI
+- Joblib
+- HTML
+- CSS
+- JavaScript
+- Jupyter Notebook
 
 ---
 
@@ -141,31 +157,90 @@ Overall, the results highlight the strong potential of Machine Learning for auto
 ```text
 Astronomical-Object-Classification/
 │
+├── api/
+│   └── main.py
+│
+├── model/
+│   ├── model.zip
+│
+├── web/
+│   ├── index.html
+│   ├── script.js
+│   ├── scroll-effects.js
+│   ├── skyfield.js
+│   ├── style.css
+│   └── three-scene.js
+│
 ├── input/
 │   └── star_classification.csv
 │
-├── SDSS_Classification.ipynb
-│ 
+├── classifier.ipynb
 └── README.md
 ```
+
+---
+
+## 📦 Model Setup
+
+The trained model is provided as **model.zip**.
+
+1. Open the `model` directory.
+2. Extract `model.zip`.
+3. Ensure:
+
+```text
+model/
+├── model.pkl
+├── scaler.pkl
+└── label_encoder.pkl
+```
+
+---
+
+## ▶️ Running the Project
+
+Run API
+
+```bash
+uvicorn api.main:app --reload
+```
+
+Open the web interface and start making predictions.
+
+---
+
+## 📸 Screenshots
+
+Add screenshots of:
+
+- Home Page
+- Prediction Result
+- API Response
+
 ---
 
 ## 🌠 Future Improvements
 
-- Hyperparameter optimisation (GridSearch / RandomSearch)
-- PCA & dimensionality reduction
-- Advanced ensemble methods (Stacking, Voting)
-- Deep learning models (CNNs, MLPs)
-- Automated discovery systems for astronomical transients
+- Docker support
+- Cloud deployment
+- Explainable AI (SHAP)
+- Model monitoring
+- Responsive UI
 
 ---
 
 ## 💡 Conclusion
 
-What once required years of manual observation can now be achieved in seconds with Machine Learning. This project sits at the intersection of Astronomy, Data Science, and Artificial Intelligence, demonstrating how modern algorithms help us better understand the universe.
+This project demonstrates a complete end-to-end Machine Learning workflow, transforming a trained astronomical classification model into a practical application through API deployment and a modern web interface.
 
 ---
 
-> 🌌 *“Every point of light in the night sky tells a story. Machine Learning helps us read it.”*
+## 📚 References
 
-### END OF README.md
+- Sloan Digital Sky Survey (SDSS)
+- Scikit-Learn Documentation
+- FastAPI Documentation
+
+---
+
+⭐ If you found this project useful, consider giving the repository a Star!
