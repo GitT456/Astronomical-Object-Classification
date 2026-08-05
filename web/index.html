@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AstralAI - Astronomical Classification</title>
+
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+<canvas id="skyfield"></canvas>
+
+
+<canvas id="scene3d"></canvas>
+
+
+<div class="grain"></div>
+
+
+
+<header class="hero">
+
+
+<span class="eyebrow">
+SDSS DR17 · AI Classification
+</span>
+
+
+
+<div class="logo">
+🌌
+</div>
+
+
+
+<h1>
+AstralAI
+</h1>
+
+
+
+<h2>
+Discover The Universe With AI
+</h2>
+
+
+
+<p>
+Machine Learning Based Astronomical Object Classification
+</p>
+
+
+
+<div class="scroll-cue">
+
+<span>Scroll to begin</span>
+
+<div class="scroll-cue-track">
+<div class="scroll-cue-dot"></div>
+</div>
+
+</div>
+
+
+
+</header>
+
+
+
+<div class="flight-gap" aria-hidden="true"></div>
+
+
+
+
+
+
+
+
+<main>
+
+
+
+
+
+<section class="panel">
+
+
+<h2>
+🔭 Astronomical Features
+</h2>
+
+
+
+<p class="intro">
+Enter SDSS observation parameters
+</p>
+
+
+
+
+
+<div class="grid">
+
+
+
+<!-- Feature Card -->
+
+<div class="field">
+
+<label>
+
+<span class="feature-name">
+alpha
+</span>
+
+
+<span class="feature-title">
+Right Ascension
+</span>
+
+
+</label>
+
+
+<input id="alpha" type="number" step="any">
+
+</div>
+
+
+
+
+
+<div class="field">
+
+<label>
+
+<span class="feature-name">
+delta
+</span>
+
+
+<span class="feature-title">
+Declination
+</span>
+
+
+</label>
+
+
+<input id="delta" type="number" step="any">
+
+</div>
+
+
+
+
+
+
+<div class="field">
+
+<label>
+
+<span class="feature-name">
+u
+</span>
+
+
+<span class="feature-title">
+Ultraviolet Magnitude
+</span>
+
+
+</label>
+
+
+<input id="u" type="number" step="any">
+
+</div>
+
+
+
+
+
+
+<div class="field">
+
+<label>
+
+<span class="feature-name">
+g
+</span>
+
+
+<span class="feature-title">
+Green Magnitude
+</span>
+
+
+</label>
+
+
+<input id="g" type="number" step="any">
+
+</div>
+
+
+
+
+
+
+
+<div class="field">
+
+<label>
+
+<span class="feature-name">
+r
+</span>
+
+
+<span class="feature-title">
+Red Magnitude
+</span>
+
+
+</label>
+
+
+<input id="r" type="number" step="any">
+
+</div>
+
+
+
+
+
+
+<div class="field">
+
+<label>
+
+<span class="feature-name">
+i
+</span>
+
+
+<span class="feature-title">
+Infrared Magnitude
+</span>
+
+
+</label>
+
+
+<input id="i" type="number" step="any">
+
+</div>
+
+
+
+
+
+
+
+<div class="field">
+
+<label>
+
+<span class="feature-name">
+z
+</span>
+
+
+<span class="feature-title">
+Near Infrared Magnitude
+</span>
+
+
+</label>
+
+
+<input id="z" type="number" step="any">
+
+</div>
+
+
+
+
+
+
+
+
+<div class="field">
+
+<label>
+
+<span class="feature-name">
+redshift
+</span>
+
+
+<span class="feature-title">
+Cosmic Distance Indicator
+</span>
+
+
+</label>
+
+
+<input id="redshift" type="number" step="any">
+
+</div>
+
+
+
+
+</div>
+
+
+
+
+
+<div class="button-group">
+
+
+<button 
+onclick="loadSample()"
+class="sample-btn">
+
+🎲 Load Random Object
+
+</button>
+
+
+
+<button 
+id="analyze-btn"
+onclick="predict()">
+
+🚀 Analyze Object
+
+</button>
+
+
+
+</div>
+
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<section class="panel result">
+
+
+
+<div id="object-icon">
+
+✨
+
+</div>
+
+
+
+
+<h2 id="prediction">
+
+Waiting For Analysis
+
+</h2>
+
+
+
+<p id="description">
+
+AI will classify the astronomical object.
+
+</p>
+
+
+
+
+<div class="confidence-box">
+
+
+<h3>
+AI Confidence
+</h3>
+
+
+
+<div class="bar">
+
+<div id="confidence-bar"></div>
+
+</div>
+
+
+
+
+<p id="confidence">
+0%
+</p>
+
+
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<section class="panel">
+
+
+<h2>
+🤖 Model Information
+</h2>
+
+
+
+<div class="info-grid">
+
+
+
+<div>
+
+
+<span>
+🌲
+</span>
+
+
+<p>
+Algorithm
+</p>
+
+
+<strong>
+Random Forest
+</strong>
+
+
+<small>
+Classification Model
+</small>
+
+
+</div>
+
+
+
+
+
+<div>
+
+
+<span>
+🌠
+</span>
+
+
+<p>
+Input Features
+</p>
+
+
+<strong>
+8 SDSS Features
+</strong>
+
+
+<small>
+Astronomical Parameters
+</small>
+
+
+</div>
+
+
+
+
+
+
+
+<div>
+
+
+<span>
+🪐
+</span>
+
+
+<p>
+Object Classes
+</p>
+
+
+<strong>
+STAR · GALAXY · QSO
+</strong>
+
+
+<small>
+Universe Classification
+</small>
+
+
+</div>
+
+
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+
+
+
+</main>
+
+
+
+
+
+
+<footer>
+
+Built with 🤖 Machine Learning + 🌌 Astronomy
+
+</footer>
+
+
+
+
+<script src="skyfield.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="three-scene.js"></script>
+<script src="scroll-effects.js"></script>
+<script src="script.js"></script>
+
+
+</body>
+
+</html>
